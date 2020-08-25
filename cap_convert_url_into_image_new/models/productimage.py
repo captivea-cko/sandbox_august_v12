@@ -26,7 +26,7 @@ class ProductImage(models.Model):
 				# outs.append([model,out])
 			futures = [executor.submit(my_action, el) for el in list]
 			for future in concurrent.futures.as_completed(futures):
-				results.append(future.result())
+				results.append(future)
 		return results
 			
 		# return(outs)
