@@ -29,8 +29,6 @@ class ProductImage(models.Model):
 				el=futures[future]
 			except Exception as exc:
 				print('%r generated an exception: %s' % (el, exc))
-				except:
-					a=1
 		return results
 			
 		# return(outs)
