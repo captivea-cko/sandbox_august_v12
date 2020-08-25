@@ -24,6 +24,14 @@ class ProductImage(models.Model):
 			for model, out in zip(recordset, executor.map(action, recordset)):
 				outs.append([model,out])
 		return(outs)
+	
+	def execute_concurrently(self, recordset):
+        results = []
+        with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
+            futures = [executor.submit(action, kwargs) for kwargs in recordset]
+        for future in concurrent.futures.as_completed(futures):
+            results.append(future.result())
+        return results
 		
 class Concurrent:
 
