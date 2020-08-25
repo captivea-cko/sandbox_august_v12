@@ -18,17 +18,17 @@ class ProductImage(models.Model):
 			line['list_price']=x
 		return(1)
 		
-	def complicated_task(self,recordset):
-		outs=[]
-		with concurrent.futures.ProcessPoolExecutor() as executor:
-			for model, out in zip(recordset, executor.map(action, recordset)):
-				outs.append([model,out])
-		return(outs)
+	# def complicated_task(self,recordset):
+		# outs=[]
+		# with concurrent.futures.ProcessPoolExecutor() as executor:
+			# for model, out in zip(recordset, executor.map(action, recordset)):
+				# outs.append([model,out])
+		# return(outs)
 	
-	def execute_concurrently(self, recordset):
+	def complicated_task(self, function, recordset):
         results = []
         with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
-            futures = [executor.submit(action, kwargs) for kwargs in recordset]
+            futures = [executor.submit(function, kwargs) for kwargs in recordset]
         for future in concurrent.futures.as_completed(futures):
             results.append(future.result())
         return results
