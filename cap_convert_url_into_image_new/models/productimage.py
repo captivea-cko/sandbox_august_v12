@@ -12,13 +12,13 @@ class ProductImage(models.Model):
 		# for x in range(1000):
 			# line['list_price']=x
 		# return(1)
-	def action(line_id):
+	def function(line_id):
 		line=self.env['product.template'].browse(line_id['id'])
 		for x in range(1000):
 			line['list_price']=x
 		return(1)
 		
-	def complicated_task(self,function,recordset):
+	def complicated_task(self,recordset):
 		results=[]
 		with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor: #was Process
 			# for model, out in zip(recordset, executor.map(function, recordset)):
