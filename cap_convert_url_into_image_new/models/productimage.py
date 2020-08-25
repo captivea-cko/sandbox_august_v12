@@ -24,7 +24,9 @@ class ProductImage(models.Model):
 			# for model, out in zip(recordset, executor.map(function, recordset)):
 				# outs.append([model,out])
 			futures = [executor.submit(function, kwargs) for kwargs in recordset]
-		return recordset
+			for future in concurrent.futures.as_completed(futures):
+				results.append(future.result())
+		return results
 			
 		# return(outs)
 		# results = []
