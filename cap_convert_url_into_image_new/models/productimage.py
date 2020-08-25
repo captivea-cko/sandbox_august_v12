@@ -19,17 +19,17 @@ class ProductImage(models.Model):
 		return(1)
 		
 	def complicated_task(self,function,recordset):
-		# outs=[]
-		# with concurrent.futures.ProcessPoolExecutor() as executor:
-			# for model, out in zip(recordset, executor.map(action, recordset)):
-				# outs.append([model,out])
-		# return(outs)
-		results = []
-        with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
-            futures = [executor.submit(function, kwargs) for kwargs in recordset]
-        for future in concurrent.futures.as_completed(futures):
-            results.append(future.result())
-        return results
+		outs=[]
+		with concurrent.futures.ProcessPoolExecutor() as executor:
+			for model, out in zip(recordset, executor.map(action, recordset)):
+				outs.append([model,out])
+		return(outs)
+		# results = []
+        # with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
+            # futures = [executor.submit(function, kwargs) for kwargs in recordset]
+        # for future in concurrent.futures.as_completed(futures):
+            # results.append(future.result())
+        # return results
 	
 	# def complicated_task(self, function, recordset):
         # results = []
