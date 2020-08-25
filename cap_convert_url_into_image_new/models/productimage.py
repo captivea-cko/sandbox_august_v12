@@ -26,8 +26,9 @@ class ProductImage(models.Model):
 				# outs.append([model,out])
 			futures = [executor.submit(my_action, el) for el in list]
 			for future in concurrent.futures.as_completed(futures):
-				try:
-					results.append(future.result())
+				el=futures[future]
+			except Exception as exc:
+				print('%r generated an exception: %s' % (el, exc))
 				except:
 					a=1
 		return results
