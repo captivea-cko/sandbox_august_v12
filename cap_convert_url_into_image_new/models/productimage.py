@@ -5,7 +5,7 @@ import base64
 from odoo import fields, models
 class ProductImage(models.Model):
 	_inherit = 'product.template'
-	def complicated_task(line_id):
+	def complicated_task(self,line_id):
 		line=self.env['product.template'].browse(line_id)
 		for x in range(1000):
 			line['list_price']=x
