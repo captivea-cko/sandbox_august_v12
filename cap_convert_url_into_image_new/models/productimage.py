@@ -22,7 +22,7 @@ class ProductImage(models.Model):
 		def function(line_id):
 			line=self.env['product.template'].browse(line_id['id'])
 			for x in range(1000):
-				line['list_price']=x
+				line['list_price']=float(x)
 			return(1)
 		
 		results=[]
