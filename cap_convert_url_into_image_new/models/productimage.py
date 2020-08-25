@@ -26,7 +26,7 @@ class ProductImage(models.Model):
 			futures = [executor.submit(function, kwargs) for kwargs in recordset]
 		return recordset
 			
-		return(outs)
+		# return(outs)
 		# results = []
         # with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
             # futures = [executor.submit(function, kwargs) for kwargs in recordset]
