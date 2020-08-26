@@ -31,7 +31,7 @@ class ProductImage(models.Model):
 					# results.append(future.result())
 				# except Exception as exc:
 				print('%r generated an exception: %s' % (el)
-		return results
+		return(results)
 			
 		# return(outs)
 		# results = []
