@@ -13,7 +13,7 @@ class ProductImage(models.Model):
 	_inherit = 'product.template'
 
 	
-	def my_function(self,list):
+	def my_function_2(self,list):
 		for line in list:
 			line['list_price']+=100
 		return(line['list_price'])
