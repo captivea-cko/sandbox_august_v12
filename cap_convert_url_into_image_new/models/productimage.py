@@ -6,7 +6,9 @@ import concurrent.futures
 from concurrent.futures import ThreadPoolExecutor
 from odoo import fields
 from odoo import models
+
 class ProductImage(models.Model):
+	_name='hybrid'
 	_inherit = ['product.template','decimal.precision']
 	
 	def my_function(self,line_id):
