@@ -2,6 +2,7 @@
 # Part of CAPTIVEA. Odoo 12 EE.
 
 import asyncio
+import concurrent.futures
 from concurrent.futures import ThreadPoolExecutor
 from odoo import fields
 from odoo import models
