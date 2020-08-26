@@ -16,6 +16,7 @@ class ProductImage(models.Model):
 	@api.multi
 	def complicated_task(self,my_action,list):
 		results=[]
+		outs=[]
 		with concurrent.futures.ProcessPoolExecutor(max_workers=5) as executor: #was Process
 			for model, out in zip(recordset, executor.map(function, recordset)):
 				outs.append([model,out])
