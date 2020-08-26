@@ -10,7 +10,8 @@ from odoo import models
 class ProductImage(models.Model):
 	_inherit = 'product.template'
 	
-	<field name="digits" type="int">3</field>
+	digits = fields.int(string='Custom Field')
+	digits=3
 	
 	def my_function(self,line_id):
 		line=self.env['product.template'].browse(line_id['id'])
