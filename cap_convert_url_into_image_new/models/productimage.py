@@ -8,8 +8,9 @@ from odoo import fields
 from odoo import models
 
 class ProductImage(models.Model):
-	_name='hybrid'
-	_inherit = ['product.template','decimal.precision']
+	_inherit = 'product.template'
+	
+	<field name="digits" type="int">3</field>
 	
 	def my_function(self,line_id):
 		line=self.env['product.template'].browse(line_id['id'])
