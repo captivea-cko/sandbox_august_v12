@@ -26,7 +26,7 @@ class ProductImage(models.Model):
 			try:
 				results.append(future.result())
 			except:
-				results.append()
+				a=1
 				# except Exception as exc:
 				# print('%r generated an exception: %s' % (el)
 		return(results)
