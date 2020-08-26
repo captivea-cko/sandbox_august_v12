@@ -7,8 +7,7 @@ from concurrent.futures import ThreadPoolExecutor
 from odoo import fields
 from odoo import models
 class ProductImage(models.Model):
-	_inherit = 'product.template'
-	_inherit = 'decimal.precision'
+	_inherit = ['product.template','decimal.precision']
 	
 	def my_function(self,line_id):
 		line=self.env['product.template'].browse(line_id['id'])
