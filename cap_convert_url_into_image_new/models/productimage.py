@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # Part of CAPTIVEA. Odoo 12 EE.
 
+import asyncio
 from concurrent.futures import ThreadPoolExecutor
 from odoo import fields
 from odoo import models
