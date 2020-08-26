@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # Part of CAPTIVEA. Odoo 12 EE.
 
-import concurrent.futures
+from concurrent.futures import ThreadPoolExecutor
 from odoo import fields
 from odoo import models
 class ProductImage(models.Model):
@@ -15,17 +15,19 @@ class ProductImage(models.Model):
 	def complicated_task(self,my_action,list):
 		results=[]
 		outs=[]
-		with concurrent.futures.ProcessPoolExecutor(max_workers=5) as executor: #was Process
-			for my_model, out in zip(recordset, executor.map(my_action, recordset)):
-				outs.append([my_model,out])
-			# futures = [executor.submit(my_action, el) for el in list]
-			# for future in concurrent.futures.as_completed(futures):
-				# el=futures[future]
-				# # try:
-					# # results.append(future.result())
-				# # except Exception as exc:
+		with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor: #was Process
+			# for my_model, out in zip(recordset, executor.map(my_action, recordset)):
+				# outs.append([my_model,out])
+			futures = [executor.submit(my_action, el) for el in list]
+			for future in concurrent.futures.as_completed(futures):
+				el=futures[future]
+				try:
+					results.append(future.result())
+				except:
+					results.append()
+				# except Exception as exc:
 				# print('%r generated an exception: %s' % (el)
-		return(outs)
+		return(results)
 			
 		# return(outs)
 		# results = []
