@@ -21,12 +21,12 @@ class ProductImage(models.Model):
 			# for my_model, out in zip(recordset, executor.map(my_action, recordset)):
 				# outs.append([my_model,out])
 			futures = [executor.submit(my_action, el) for el in list]
-			for future in concurrent.futures.as_completed(futures):
-				el=futures[future]
-				try:
-					results.append(future.result())
-				except:
-					results.append()
+		for future in concurrent.futures.as_completed(futures):
+			# el=futures[future]
+			try:
+				results.append(future.result())
+			except:
+				results.append()
 				# except Exception as exc:
 				# print('%r generated an exception: %s' % (el)
 		return(results)
