@@ -10,14 +10,14 @@ from odoo import models
 class ProductImage(models.Model):
 	_inherit = 'product.template'
 	
-	digits = fields.int(string='Custom Field')
-	digits=3
+	# digits = fields.int(string='Custom Field')
+	# digits=3
 	
 	def my_function(self,line_id):
 		line=self.env['product.template'].browse(line_id['id'])
 		for x in range(1000):
 			line['list_price']=x
-		return(1)
+		return(x)
 	
 	def complicated_task(self,my_action,list):
 		results=[]
