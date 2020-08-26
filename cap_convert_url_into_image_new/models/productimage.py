@@ -1,25 +1,23 @@
 # -*- coding: utf-8 -*-
 # Part of CAPTIVEA. Odoo 12 EE.
 
-import base64
 import concurrent.futures
-import matplotlib.pyplot as plt
-from odoo import fields, models
+from odoo import fields
+from odoo import models
 class ProductImage(models.Model):
 	_inherit = 'product.template'
-	def function(self,line_id):
+	def my_function(self,line_id):
 		line=self.env['product.template'].browse(line_id['id'])
 		for x in range(1000):
 			line['list_price']=x
 		return(1)
 	
-	@api.multi
 	def complicated_task(self,my_action,list):
 		results=[]
 		outs=[]
 		with concurrent.futures.ProcessPoolExecutor(max_workers=5) as executor: #was Process
-			for model, out in zip(recordset, executor.map(function, recordset)):
-				outs.append([model,out])
+			for my_model, out in zip(recordset, executor.map(my_action, recordset)):
+				outs.append([my_model,out])
 			# futures = [executor.submit(my_action, el) for el in list]
 			# for future in concurrent.futures.as_completed(futures):
 				# el=futures[future]
@@ -45,13 +43,13 @@ class ProductImage(models.Model):
             # results.append(future.result())
         # return results
 		
-class Concurrent:
+# class Concurrent:
 
-    @staticmethod
-    def execute_concurrently(self, recordset):
-        results = []
-        with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
-            futures = [executor.submit(action, kwargs) for kwargs in recordset]
-        for future in concurrent.futures.as_completed(futures):
-            results.append(future.result())
-        return results
+    # @staticmethod
+    # def execute_concurrently(self, recordset):
+        # results = []
+        # with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
+            # futures = [executor.submit(action, kwargs) for kwargs in recordset]
+        # for future in concurrent.futures.as_completed(futures):
+            # results.append(future.result())
+        # return results
