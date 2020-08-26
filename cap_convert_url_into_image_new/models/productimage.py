@@ -12,12 +12,13 @@ class ProductImage(models.Model):
 		# for x in range(1000):
 			# line['list_price']=x
 		# return(1)
-	def function(line_id):
+	def function(self,line_id):
 		line=self.env['product.template'].browse(line_id['id'])
 		for x in range(1000):
 			line['list_price']=x
 		return(1)
-		
+	
+	@api.multi
 	def complicated_task(self,my_action,list):
 		
 		results=[]
